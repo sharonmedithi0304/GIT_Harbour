@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-amber-50: #fffbeb;
+  --color-amber-100: #fef3c7;
+  --color-amber-200: #fde68a;
+  --color-amber-300: #fcd34d;
+  --color-amber-400: #fbbf24;
+  --color-amber-500: #f59e0b;
+  --color-amber-600: #d97706;
+  --color-amber-700: #b45309;
+  --color-amber-800: #92400e;
+  --color-amber-900: #78350f;
+  --color-amber-950: #451a03;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #0c1220;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-serif {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(28, 25, 23, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(180, 83, 9, 0.4);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(180, 83, 9, 0.6);
+}
+
+/* Canvas optimization */
+canvas {
+  display: block;
+  touch-action: none;
+}
+
+/* Animation keyframes */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(245, 158, 11, 0.5);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes drift {
+  0%, 100% {
+    transform: translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateX(10px) rotate(2deg);
+  }
+  75% {
+    transform: translateX(-10px) rotate(-2deg);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+.animate-drift {
+  animation: drift 8s ease-in-out infinite;
+}
+
+/* Loading states */
+.loading-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(120, 53, 15, 0.2) 0%,
+    rgba(120, 53, 15, 0.4) 50%,
+    rgba(120, 53, 15, 0.2) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s linear infinite;
+}
+
+/* Focus styles */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #f59e0b;
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background: rgba(245, 158, 11, 0.3);
+  color: #fef3c7;
+}
+
+/* Wood texture overlay */
+.wood-texture {
+  position: relative;
+}
+
+.wood-texture::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+}
+
+/* Compass rose animation */
+@keyframes compass-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.compass-spin {
+  animation: compass-spin 20s linear infinite;
+}
+
+/* Wave text effect */
+.wave-text {
+  display: inline-block;
+  animation: float 2s ease-in-out infinite;
+}
+
+.wave-text:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.wave-text:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.wave-text:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #fef3c7 0%, #fcd34d 50%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass morphism */
+.glass {
+  background: rgba(28, 25, 23, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(180, 83, 9, 0.2);
+}
+
+/* Ambient particles class */
+.ambient-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(251, 191, 36, 0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Cinematic fade */
+.cinematic-fade-in {
+  animation: fadeIn 2s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive typography */
+@media (max-width: 640px) {
+  .responsive-text {
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .responsive-text {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .responsive-text {
+    font-size: 1.125rem;
+  }
+}
